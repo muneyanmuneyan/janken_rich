@@ -1,0 +1,295 @@
+body{
+    margin:0;
+    padding:0;
+    font-size: 32px;
+ /* ドット柄の背景 */
+    background-color: #fff3e0;   
+    background-image:
+        radial-gradient(#ffa040 1.5px, transparent 1.5px),
+        radial-gradient(#ffa040 1.5px, transparent 1.5px);
+    background-size: 30px 30px;
+    background-position: 0 0, 15px 15px; /* 2つ目の模様を半マスずらす */
+}
+
+/* タイトル画像 */
+header h1 {
+    margin: 10px 0;
+    text-align: center;   
+}
+
+header h1 img {
+    width: 700px;            
+    max-width: 100%;         
+    height: auto;            
+    vertical-align: bottom;  
+}
+
+/* 「好きな手を選んでね」 */
+.guide {
+    margin: 10px 0;       
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #555;
+}
+
+/*  戦績カウンター */
+.score {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;                 
+    margin: 15px 0 0;          
+}
+
+/* リセットボタン */
+#reset_btn {
+    padding: 10px 24px;        
+    font-size: 22px;           
+    box-shadow: 0 4px 0 rgba(0, 0, 0, 0.2);
+    font-weight: bold;
+    font-family: inherit;      
+    color: #fff;
+    background: #95a5a6;       
+    border: none;              
+    border-radius: 999px;      
+    box-shadow: 0 3px 0 rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: transform 0.1s, filter 0.2s;
+}
+
+#reset_btn:hover {
+    filter: brightness(1.1);
+}
+
+
+#reset_btn:active {
+    transform: translateY(3px);
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
+}
+
+/* ===== 「じゃん・けん・ぽん！」の掛け声 ===== */
+#call {
+    height: 50px;              
+    margin: 5px 0;
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    line-height: 50px;
+    color: #e67e22;            
+    text-shadow: 3px 3px 0 #fff; 
+}
+
+/* 掛け声が飛び出すアニメーション */
+.pop {
+    display: inline-block;    
+    animation: pop 0.3s ease-out;
+}
+
+@keyframes pop {
+    0%   { transform: scale(0.3); opacity: 0; } 
+    70%  { transform: scale(1.5); opacity: 1; } /* 大きくなって表示される */
+    100% { transform: scale(1);   }             
+}
+
+.score_item {
+    padding: 10px 24px;        
+    font-size: 22px;           
+    font-weight: bold;
+    color: #fff;
+    border-radius: 999px;
+    box-shadow: 0 4px 0 rgba(0, 0, 0, 0.2);  
+}
+
+/* 結果ごとの色 */
+.score_win  { background: #e74c3c; }  /* 勝ち：赤 */
+.score_lose { background: #3498db; }  /* 負け：青 */
+.score_draw { background: #f1c40f; }  /* あいこ：黄 */
+
+
+/* グー・チョキ・パーボタン */
+main ul {
+    display: flex;               
+    justify-content: center;     
+    gap: 20px;
+    list-style: none;            /* 先頭の「・」を消す */
+    padding: 10px;
+    margin: 1px 0 3px;
+}
+
+/* ボタン共通の見た目 */
+main ul li {
+    display: flex;
+    align-items: center;         /* 中身を上下の中央に */
+    justify-content: center;
+    width : 120px;
+    border-radius: 12px;            
+    box-shadow: 0 4px 0 rgba(0, 0, 0, 0.25); 
+    cursor: pointer;                 /* マウスを乗せると指マークになる */
+    user-select: none;               /* 連打しても文字が選択されない */
+    transition: transform 0.1s, filter 0.2s;
+}
+
+/* ボタンごとの色 */
+#gu_btn  { background: #e74c3c; }  /* 赤 */
+#cho_btn { background: #f1c40f; }  /* 黄 */
+#par_btn { background: #3498db; }  /* 青 */
+
+main ul li:hover {
+    filter: brightness(1.15);
+}
+
+main ul li:active {
+    transform: translateY(4px);
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0.25);
+}
+
+/* ボタンの中の画像 */
+main ul li img {
+    display: block;           
+    width: 90px;              
+    height: 100px;
+    object-fit: contain;      
+}
+
+/*グーの位置を調整 */
+#gu_btn img  { transform: translate(-4px, -6px); }
+
+/*チョキの位置を調整 */
+#cho_btn img  { transform: translate(8px, 0px); }
+
+/* パーの位置を調整 */
+#par_btn img { transform: scale(0.95); }
+
+
+/* コンピュータの手を表示する枠 */
+.pc_area {
+    width: 360px;
+    max-width: 90%;          
+    margin: 20px auto;       
+    padding: 20px;
+    text-align: center;
+    background: #fff8e1;     
+    border: 4px solid #f1c40f;
+    border-radius: 20px;     
+    box-shadow: 0 6px 0 #e0b000; 
+}
+
+/* 「コンピュータの出した手は？」の文字 */
+.pc_label {
+    display: block;          
+    margin-bottom: 10px;
+    padding: 6px 12px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    background: #3498db;    
+    border-radius: 999px;   
+}
+
+/* 自分の手とコンピュータの手を横に並べる */
+.hands_row {
+    display: flex;
+    justify-content: center;  
+    align-items: center;       
+    flex-wrap: wrap;         
+    gap: 16px;
+    margin: 0 auto 20px;
+}
+
+/* 並べたときの枠の大きさ */
+.hands_row .pc_area {
+    width: 220px;
+    margin: 0;                
+}
+
+/* 「あなたの手」の枠：赤系にする */
+.my_area {
+    background: #ffeeee;            
+    border-color: #e74c3c;          
+    box-shadow: 0 6px 0 #c0392b;   
+}
+
+.my_area .pc_label {
+    background: #e74c3c;            
+}
+
+/* 「VS」の文字 */
+.vs {
+    font-size: 36px;
+    font-weight: bold;
+    color: #e67e22;
+    text-shadow: 2px 2px 0 #fff;   
+}
+
+
+/* コンピュータの手（絵文字） */
+#pc_hands, #my_hands{
+    display: inline-block;    
+    font-size: 100px;         
+    line-height: 1;           
+    margin: 10px 0;           
+}
+
+/* ===== 勝ち・負け・あいこ ===== */
+#judgment {
+    margin: 10px 0;
+    text-align: center;
+}
+
+#judgment img {
+    width: 250px;                
+    max-width: 80%;              
+    height: auto;
+}
+
+/* ===== 何回戦目か ===== */
+#round {
+    width: fit-content;      
+    margin: 0 auto 10px;       
+    padding: 4px 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #e67e22;
+    background: #fff;
+    border: 3px solid #e67e22;
+    border-radius: 999px;
+}
+
+/* ===== 最終結果 ===== */
+#final {
+    text-align: center;
+}
+
+/* 最終結果が表示の時にカードの見た目にする */
+#final:not(:empty) {
+    width: 360px;
+    max-width: 90%;
+    margin: 20px auto 40px;
+    padding: 20px;
+    background: #fff;
+    border: 4px solid #e67e22;
+    border-radius: 20px;
+    box-shadow: 0 6px 0 #d35400;
+    animation: pop 0.4s ease-out;  
+}
+
+.final_title {
+    margin: 0 0 10px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #e67e22;
+}
+
+.final_detail {
+    margin: 0 0 10px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #555;
+}
+
+.final_hint {
+    margin: 0;
+    font-size: 16px;
+    color: #888;
+}
