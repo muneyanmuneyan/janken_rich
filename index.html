@@ -57,10 +57,10 @@
      <footer></footer>
     
     <script>
-      // 表示までの時間（ミリ秒）
+      // 表示までの時間
       const HAND_DELAY = 1000;   // コンピュータの手を表示するまで1秒待つ
       const RESULT_DELAY = 2000; // 勝ち・負け・あいこを表示するまで2秒待つ
-      const MAX_ROUND = 5; // 5回勝負か
+      const MAX_ROUND = 3; // 3回勝負
       let playing = false; // 表示中はクリックを受け付けない
 
     // 戦績（勝ち・負け・あいこの回数）
@@ -69,7 +69,7 @@
       let drawCount = 0;
 
 
-    // 掛け声を表示する関数
+    // 掛け声を表示する
     function showCall(text) {
     // アニメーション再生
     $("#call").html('<span class="pop">' + text + '</span>');
@@ -187,7 +187,7 @@
 
         $("#call").html("");  // 掛け声を消す
         updateScore(result); // 結果の画像と同時に戦績を更新
-        if (isGameOver()) {   //5回終わったら
+        if (isGameOver()) {   //3回終わったら
         showFinal();      // 最終結果を表示
         }
         playing = false; // 表示が終わって次のクリックを受け付け
